@@ -8,9 +8,8 @@ import "./interfaces/IERC20.sol";
 contract Bank is IBank {
 
     address public ETH_ADDRESS = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
-    // TODO still wrong
-    // this is the first one : 0xBefeeD4CB8c6DD190793b1c97B72B60272f3EA6C
-    address public HAK_ADDRESS = 0xBefeeD4CB8c6DD190793b1c97B72B60272f3EA6C;
+    // Well this idea was complete crap !
+    // address public HAK_ADDRESS = 0xBefeeD4CB8c6DD190793b1c97B72B60272f3EA6C;
 
     //mapping (address => uint) public balancesETH;
     //mapping (address => uint) public balancesHACK;
@@ -174,7 +173,7 @@ contract Bank is IBank {
             else
                 revert("unknown token");
 
-            uint256 interest = 0;
+            uint256 interest = _computeInterest(account, DEPOSIT_INTEREST_RATE);
             // again just use +=
             //return account.deposit.add(interest);
             return account.deposit+=interest;
